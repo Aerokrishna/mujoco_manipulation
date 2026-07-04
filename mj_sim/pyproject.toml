@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sim-cyro"
+version = "0.1.0"
+description = "MuJoCo simulation framework for the CyRo tri-arm robotic system"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "sim_cyro contributors" }
+]
+keywords = ["robotics", "simulation", "mujoco", "tri-arm", "cyro"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Robotics",
+]
+dependencies = [
+    "mujoco>=3.5.0",
+    "numpy>=2.0",
+    "PyYAML>=6.0",
+    "quadprog>=0.1.13",
+    "qpsolvers>=4.8.2",
+    "scipy>=1.17",
+    "trimesh>=4.11.2",
+    "pycollada>=0.9.3",
+    "opencv-contrib-python>=4.13.0.92",
+    "gdown>=5.0",
+]
+
+[project.optional-dependencies]
+task-space = ["pinocchio", "pink"]
+dev = ["pytest", "ruff"]
+all = ["sim-cyro[task-space,dev]"]
+
+[project.scripts]
+sim-cyro-urdf2xml = "sim_cyro.cli:main_urdf2xml"
+
+[project.urls]
+Repository = "https://dev.azure.com/cynlr-rnd/Idea_Board/_git/sim_cyro"
+
+[tool.setuptools.packages.find]
+include = ["sim_cyro*"]
+
+[tool.setuptools.package-data]
+sim_cyro = ["assets/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
