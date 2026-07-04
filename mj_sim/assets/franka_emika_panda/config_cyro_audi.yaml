@@ -26,8 +26,8 @@
 #   3. Adjust gripper/camera actuator names if different.
 # ─────────────────────────────────────────────────────────────────────────────
 
-scene_xml_path: mjx_scene.xml
-robot_xml_path: mjx_panda.xml
+scene_xml_path: scene.xml
+robot_xml_path: panda.xml
 
 # Gripper: position actuators for DH AG145
 grippers:
@@ -43,7 +43,7 @@ stereo_right_yaw_motor: null
 arms:
   left:
     start_body:           link0
-    ee_site:              gripper
+    ee_site:              attachment_site
     wrench_force_sensor:  null
     wrench_torque_sensor: null
     q_home: [0.0,

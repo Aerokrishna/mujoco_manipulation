@@ -133,8 +133,10 @@ class CyRoSimulator:
             self._aux_config,
         )
 
+        # Use the actual MuJoCo step size for controller integration.
+        # control_hz only affects viewer pacing / UI refresh cadence.
+        self._dt = self._mj.model.opt.timestep * _N_SUBSTEPS
         self._sim_time = 0.0
-        self._dt = 1.0 / _CONTROL_HZ
         self._running = False
         self._callbacks: list[Callable[[int, float, Telemetry], None]] = []
         self._pre_tick_callbacks: list[Callable[[], None]] = []
@@ -148,10 +150,11 @@ class CyRoSimulator:
 
         self._reset_to_home()
         logger.info(
-            "CyRoSimulator ready | arms=%s | %d Hz | %d substeps | "
-            "Pinocchio=%s | Pink=%s",
+            "CyRoSimulator ready | arms=%s | %d Hz config | physics_dt=%.4f s | "
+            "%d substeps | Pinocchio=%s | Pink=%s",
             list(self._arm_configs.keys()),
             _CONTROL_HZ,
+            self._dt,
             _N_SUBSTEPS,
             _PIN_OK,
             _PINK_OK,
@@ -411,6 +414,9 @@ class CyRoSimulator:
 
         self._mj.physics_step()
         self._sim_time += dt
+
+        # Refresh kinematics from the post-step state before collecting telemetry.
+        self._pin_sync.sync()
 
         if not np.all(np.isfinite(self._mj.data.qpos)):
             logger.warning(

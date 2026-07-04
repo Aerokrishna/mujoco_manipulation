@@ -1,6 +1,4 @@
-# Python cache
+.vscode/
 __pycache__/
 *.py[cod]
-
-# VS Code
-.vscode/
+*.egg-info/
