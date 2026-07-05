@@ -53,17 +53,3 @@ arms:
                 0.0,
                 1.57079633,
                 0.78539816]
-
-  # center:
-  #   start_body: center_robot_base_link
-  #   ee_site:    ee_frame_center
-  #   wrench_force_sensor:  null
-  #   wrench_torque_sensor: null
-  #   q_home: [1.57, -1.57, -0.78, -1.57, 1.97, -0.39, -1.57]
-
-  # right:
-  #   start_body:           right_robot_base_link
-  #   ee_site:              ee_frame_right
-  #   wrench_force_sensor:  force_ee_right
-  #   wrench_torque_sensor: torque_ee_right
-  #   q_home: [1.57, -1.57, -0.78, -1.57, 1.97, -0.39, -1.57]

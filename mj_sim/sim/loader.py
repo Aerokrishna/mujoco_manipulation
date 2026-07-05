@@ -234,4 +234,4 @@ def main():
     config = assets / "config_cyro_audi.yaml"
     print(loader.from_yaml(config))
 
-main()
+# main()
