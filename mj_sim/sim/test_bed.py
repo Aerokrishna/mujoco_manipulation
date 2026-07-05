@@ -7,6 +7,10 @@ from simulator import CyRoSimulator
 from sim_types import ControlMode, Telemetry
 from constants import _CONTROL_HZ
 from pathlib import Path
+import sys 
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2])) 
+from robot_kinematics.manyplot.telemetry_logger import TelemetryLogger
 
 dual_arm = True
 
@@ -15,6 +19,8 @@ if dual_arm:
     default = assets / "dual_franka.yaml"
 else:
     default = assets / "franka.yaml"
+
+telem_log = TelemetryLogger()
 
 def main_demo() -> None:
     """Run the built-in demo (interactive MuJoCo viewer)."""
@@ -40,6 +46,13 @@ def main_demo() -> None:
                                                                 [ 2.00269853e-03, -9.99997994e-01, -1.90771176e-05 ],
                                                                 [-2.15765751e-03,  1.47559653e-05, -9.99997672e-01 ]])
         
+        telem_log.collect_joint_data(telem.joint_pos['left'], 
+                                     telem.joint_torque['left'],
+                                     telem.timestamp)
+        
+        if tick == 1000:
+            telem_log.save_csv("mycsv")
+            
     sim.on_step(on_step)
     sim.run(headless=False)
 
