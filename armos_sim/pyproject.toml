@@ -1,18 +1,27 @@
 [build-system]
-requires = ["setuptools>=61", "wheel"]
+requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "sim-cyro"
+name = "armos"
 version = "0.1.0"
 description = "MuJoCo simulation framework for the CyRo tri-arm robotic system"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10"
+
 authors = [
-    { name = "sim_cyro contributors" }
+    { name = "armos contributors" }
 ]
-keywords = ["robotics", "simulation", "mujoco", "tri-arm", "cyro"]
+
+keywords = [
+    "robotics",
+    "simulation",
+    "mujoco",
+    "tri-arm",
+    "cyro",
+]
+
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Science/Research",
@@ -25,13 +34,12 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
     "Topic :: Scientific/Engineering :: Robotics",
 ]
+
 dependencies = [
     "mujoco>=3.5.0",
-    "numpy>=2.0",
+    "numpy>=1.26,<2.0",,
     "PyYAML>=6.0",
     "quadprog>=0.1.13",
-    "qpsolvers>=4.8.2",
-    "scipy>=1.17",
     "trimesh>=4.11.2",
     "pycollada>=0.9.3",
     "opencv-contrib-python>=4.13.0.92",
@@ -39,21 +47,36 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-task-space = ["pinocchio", "pink"]
-dev = ["pytest", "ruff"]
-all = ["sim-cyro[task-space,dev]"]
 
-[project.scripts]
-sim-cyro-urdf2xml = "sim_cyro.cli:main_urdf2xml"
+# Pinocchio and Pink for task-space control
+task-space = [
+    "pin>=2.6",
+    "pin-pink",
+]
 
-[project.urls]
-Repository = "https://dev.azure.com/cynlr-rnd/Idea_Board/_git/sim_cyro"
+# ROS 2 dependencies are intentionally not installed through pip.
+# rclpy comes from the ROS 2 installation.
+ros2 = []
+
+# Development dependencies
+dev = [
+    "pytest",
+    "ruff",
+]
+
+# All optional development/task-space dependencies
+all = [
+    "pin>=2.6",
+    "pin-pink",
+    "pytest",
+    "ruff",
+]
 
 [tool.setuptools.packages.find]
-include = ["sim_cyro*"]
-
-[tool.setuptools.package-data]
-sim_cyro = ["assets/**/*"]
+include = [
+    "sim",
+    "sim.*",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -64,4 +87,10 @@ line-length = 100
 target-version = "py310"
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "UP", "B"]
+select = [
+    "E",
+    "F",
+    "I",
+    "UP",
+    "B",
+]

@@ -28,8 +28,15 @@ Control Modes
     TASK_VEL     – Cartesian twist via Jacobian    (needs pinocchio)
 """
 
-from sim_types import ArmConfig, ControlMode, Telemetry
-from simulator import CyRoSimulator
+from pathlib import Path
+import sys
+
+_PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(_PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT))
+
+from .sim_types import ArmConfig, ControlMode, Telemetry
+from .simulator import CyRoSimulator
 
 __version__ = "0.1.0"
 

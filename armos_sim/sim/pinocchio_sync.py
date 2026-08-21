@@ -8,8 +8,8 @@ from typing import Dict, Tuple
 import mujoco
 import numpy as np
 
-from mj_model import _MuJoCoModel
-from sim_types import ArmConfig
+from .mj_model import _MuJoCoModel
+from .sim_types import ArmConfig
 
 try:
     import pinocchio as pin

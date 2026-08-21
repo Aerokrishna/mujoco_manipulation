@@ -3,8 +3,8 @@
 
 import time
 import numpy as np
-from simulator import CyRoSimulator
-from sim_types import ControlMode, Telemetry
+from sim_cyro.simulator import CyRoSimulator
+from sim_cyro.sim_types import ControlMode, Telemetry
 from constants import _CONTROL_HZ
 from pathlib import Path
 

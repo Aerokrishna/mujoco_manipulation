@@ -16,20 +16,20 @@ import mujoco
 import mujoco.viewer
 import numpy as np
 
-from constants import _CONTROL_HZ, _N_SUBSTEPS
-from controller import _ArmController, _PinkSolver
-from loader import _RobotLoader
-from mj_model import _MuJoCoModel
-from pinocchio_sync import _PinocchioSync
-from telemetry import _TelemetryCollector
-from sim_types import ArmConfig, ControlMode, Telemetry
-from viewer_frames import (
+from .constants import _CONTROL_HZ, _N_SUBSTEPS
+from .controller import _ArmController, _PinkSolver
+from .loader import _RobotLoader
+from .mj_model import _MuJoCoModel
+from .pinocchio_sync import _PinocchioSync
+from .telemetry import _TelemetryCollector
+from .sim_types import ArmConfig, ControlMode, Telemetry
+from .viewer_frames import (
     draw_all_frames,
     poses_equal,
     read_object_pose,
     resolve_object_ref,
 )
-from sim_types import ArmConfig, ControlMode, Telemetry, ToolParams
+from .sim_types import ArmConfig, ControlMode, Telemetry, ToolParams
 
 try:
     import pinocchio  # noqa: F401

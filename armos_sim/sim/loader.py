@@ -11,7 +11,7 @@ from typing import Dict, List, Tuple
 import mujoco
 import numpy as np
 
-from sim_types import ArmConfig, ToolParams
+from .sim_types import ArmConfig, ToolParams
 
 try:
     import yaml as _yaml

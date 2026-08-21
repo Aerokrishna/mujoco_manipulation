@@ -3,9 +3,9 @@
 
 import time
 import numpy as np
-from simulator import CyRoSimulator
-from sim_types import ControlMode, Telemetry
-from constants import _CONTROL_HZ
+from .simulator import CyRoSimulator
+from .sim_types import ControlMode, Telemetry
+from .constants import _CONTROL_HZ
 from pathlib import Path
 import sys 
 
@@ -32,7 +32,7 @@ def main_demo() -> None:
         # print(tick)
         if tick==2:
             sim.set_mode("left", ControlMode.JOINT_POS)
-            sim.set_joint_pos("left", q = [0.0, -0.78539816, 0.0, -2.35619449, 0.0, 1.57079633, 0.78539816])
+            sim.set_joint_pos("left", q = [1.56, -0.78539816, 0.0, -2.35619449, 0.0, 1.57079633, 0.78539816])
             
         if tick ==100:
             sim.set_mode("left", ControlMode.TASK_POSE)
@@ -41,17 +41,17 @@ def main_demo() -> None:
             sim.show_object_frame("panda")
 
         if tick==101:
-            # sim.set_tcp_vel("left", linear=[-0.05, 0., -0.06], angular=[0.,0.0,0.])
+            # sim.set_tcp_vel("left.", linear=[-0.05, 0., -0.06], angular=[0.,0.0,0.])
             sim.set_tcp_pose("left", pos=[0.3, 0, 0.2], rot = [[ 9.99995667e-01,  2.00273503e-03, -2.15762363e-03],
                                                                 [ 2.00269853e-03, -9.99997994e-01, -1.90771176e-05 ],
                                                                 [-2.15765751e-03,  1.47559653e-05, -9.99997672e-01 ]])
         
-        telem_log.collect_joint_data(telem.joint_pos['left'], 
-                                     telem.joint_torque['left'],
-                                     telem.timestamp)
+        if tick == 200:
+            sim.set_mode("left", ControlMode.TASK_VEL)
         
-        if tick == 1000:
-            telem_log.save_csv("mycsv")
+        if 2600>tick>=200:
+            sim.set_tcp_vel("left", linear=[0, 0, 0.05], angular=[0, 0.02, 0])
+            # print("collecting tick :", tick)
             
     sim.on_step(on_step)
     sim.run(headless=False)

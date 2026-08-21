@@ -7,10 +7,10 @@ from typing import Dict
 import mujoco
 import numpy as np
 
-from controller import _ArmController
-from mj_model import _MuJoCoModel
-from pinocchio_sync import _PinocchioSync
-from sim_types import ArmConfig, Telemetry
+from .controller import _ArmController
+from .mj_model import _MuJoCoModel
+from .pinocchio_sync import _PinocchioSync
+from .sim_types import ArmConfig, Telemetry
 
 
 def _wxyz_to_R(q: np.ndarray) -> np.ndarray:

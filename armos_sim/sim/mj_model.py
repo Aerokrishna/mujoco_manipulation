@@ -7,7 +7,7 @@ from typing import List, Tuple
 import mujoco
 import numpy as np
 
-from constants import _N_SUBSTEPS
+from .constants import _N_SUBSTEPS
 
 
 class _MuJoCoModel:

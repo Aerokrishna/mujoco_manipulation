@@ -8,10 +8,10 @@ from typing import Dict, Optional, Tuple
 
 import numpy as np
 
-from constants import _BLEND_TIME
-from mj_model import _MuJoCoModel
-from pinocchio_sync import _PinocchioSync, _wxyz_to_R
-from sim_types import ArmConfig, ControlMode, _JointCmd, _TaskCmd
+from .constants import _BLEND_TIME
+from .mj_model import _MuJoCoModel
+from .pinocchio_sync import _PinocchioSync, _wxyz_to_R
+from .sim_types import ArmConfig, ControlMode, _JointCmd, _TaskCmd
 
 try:
     import pinocchio as pin
