@@ -1,476 +1,486 @@
-"""
-URDF to MJCF conversion for CyRo robot.
+#!/usr/bin/env python3
 
-Generates CyRo.xml and meshes/ from a source URDF file.
+"""
+Generic URDF -> MuJoCo MJCF converter.
+
+Usage:
+    python urdf_to_mjcf.py /path/to/robot.urdf
+
+    python urdf_to_mjcf.py /path/to/robot.urdf -o /path/to/output
+
+Requirements:
+    pip install mujoco trimesh
 """
 
 from __future__ import annotations
 
+import argparse
 import os
-import re
 import shutil
 import tempfile
 import xml.etree.ElementTree as ET
-from collections import defaultdict
 from pathlib import Path
 
-# joints to remove (rod joints in AG145)
-DELETED_GRIPPER_JOINTS = {
-    "left_robot_gripper_finger1_finger_joint",
-    "left_robot_gripper_finger2_finger_joint",
-    "right_robot_gripper_finger1_finger_joint",
-    "right_robot_gripper_finger2_finger_joint",
-}
 
-# only these joints get actuators
-GRIPPER_ACTUATED_JOINTS = {
-    "left_robot_gripper_finger1_joint",
-    "right_robot_gripper_finger1_joint",
-}
-
-# first body of each gripper; sites are inserted into its parent body
-GRIPPER_FIRST_BODIES = [
-    ("left_robot_gripper_base_link", ("ft_frame_left", "ee_frame_left")),
-    ("right_robot_gripper_base_link", ("ft_frame_right", "ee_frame_right")),
-    ("center_robot_clx_link", ("ee_frame_center",)),
-]
-
-def _indent(elem, level=0):
-    i = "\n" + level * "    "
-    if len(elem):
-        if not elem.text or not elem.text.strip():
-            elem.text = i + "    "
-        for child in elem:
-            _indent(child, level + 1)
-        if not elem.tail or not elem.tail.strip():
-            elem.tail = i
-    else:
-        if level and (not elem.tail or not elem.tail.strip()):
-            elem.tail = i
+SUPPORTED_MESH_FORMATS = {".stl", ".obj", ".dae", ".ply"}
 
 
-def convert_urdf_to_xml(
-    urdf_path: str | Path,
-    output_dir: str | Path | None = None,
+def indent_xml(element: ET.Element, level: int = 0) -> None:
+    """Pretty-print an ElementTree XML tree."""
+
+    indentation = "\n" + level * "    "
+
+    if len(element):
+        if not element.text or not element.text.strip():
+            element.text = indentation + "    "
+
+        for child in element:
+            indent_xml(child, level + 1)
+
+        if not element.tail or not element.tail.strip():
+            element.tail = indentation
+
+    elif level and (not element.tail or not element.tail.strip()):
+        element.tail = indentation
+
+def resolve_mesh_path(mesh_filename: str, urdf_dir: Path) -> Path:
+    """
+    Resolve a mesh filename from a URDF.
+
+    Searches for meshes starting one directory above the URDF directory.
+
+    Handles:
+        mesh.stl
+        meshes/mesh.stl
+        package://robot_description/meshes/mesh.stl
+        file:///absolute/path/mesh.stl
+    """
+
+    mesh_filename = mesh_filename.strip()
+
+    # Remove URI prefixes
+    if mesh_filename.startswith("file://"):
+        mesh_filename = mesh_filename[7:]
+
+    if mesh_filename.startswith("package://"):
+        # Remove package://package_name/
+        remainder = mesh_filename[len("package://"):]
+        parts = remainder.split("/", 1)
+
+        if len(parts) == 2:
+            mesh_filename = parts[1]
+        else:
+            mesh_filename = parts[0]
+
+    mesh_path = Path(mesh_filename)
+
+    # Absolute path
+    if mesh_path.is_absolute() and mesh_path.exists():
+        return mesh_path.resolve()
+
+    # Search from one directory above the URDF directory
+    search_root = urdf_dir.parent
+
+    # Try the path relative to the parent directory
+    candidate = (search_root / mesh_path).resolve()
+
+    if candidate.exists():
+        return candidate
+
+    # Search recursively from the parent directory
+    filename = mesh_path.name
+
+    matches = list(search_root.rglob(filename))
+
+    if matches:
+        return matches[0].resolve()
+
+    raise FileNotFoundError(
+        f"Could not find mesh referenced by URDF:\n"
+        f"    {mesh_filename}\n"
+        f"Searched recursively from:\n"
+        f"    {search_root}"
+    )
+
+def convert_mesh_to_stl(source: Path, destination: Path) -> None:
+    """Convert OBJ/DAE/PLY mesh to STL using trimesh."""
+
+    import trimesh
+
+    destination.parent.mkdir(parents=True, exist_ok=True)
+
+    mesh = trimesh.load(str(source), force="mesh")
+
+    if isinstance(mesh, trimesh.Scene):
+        meshes = []
+
+        for geometry in mesh.geometry.values():
+            meshes.append(geometry)
+
+        if not meshes:
+            raise RuntimeError(f"No geometry found in mesh: {source}")
+
+        mesh = trimesh.util.concatenate(meshes)
+
+    mesh.export(str(destination))
+
+
+def prepare_meshes(
+    urdf_root: ET.Element,
+    urdf_path: Path,
+    output_dir: Path,
 ) -> None:
     """
-    Convert CyRo URDF to MJCF XML and copy mesh files.
+    Copy/convert all meshes referenced by the URDF into:
+
+        output_dir/meshes/
+
+    and rewrite their URDF paths to be relative.
+    """
+
+    meshes_dir = output_dir / "meshes"
+    meshes_dir.mkdir(parents=True, exist_ok=True)
+
+    processed = {}
+
+    for mesh in urdf_root.iter("mesh"):
+
+        filename = mesh.get("filename")
+
+        if not filename:
+            continue
+
+        source = resolve_mesh_path(filename, urdf_path.parent)
+
+        # Preserve the original filename where possible.
+        original_name = source.stem
+
+        extension = source.suffix.lower()
+
+        if extension not in SUPPORTED_MESH_FORMATS:
+            raise RuntimeError(
+                f"Unsupported mesh format '{extension}' for:\n"
+                f"    {source}"
+            )
+
+        # MuJoCo handles STL very reliably.
+        #
+        # Convert OBJ/DAE/PLY to STL.
+        if extension != ".stl":
+            output_name = original_name + ".stl"
+        else:
+            output_name = source.name
+
+        destination = meshes_dir / output_name
+
+        # Deal with multiple meshes having the same filename.
+        if output_name in processed:
+            previous_source = processed[output_name]
+
+            if previous_source != source:
+                stem = source.stem
+                output_name = f"{stem}_{abs(hash(str(source))) & 0xFFFF:04x}.stl"
+                destination = meshes_dir / output_name
+
+        if not destination.exists():
+
+            if extension == ".stl":
+                print(f"Copying mesh:     {source}")
+                shutil.copy2(source, destination)
+
+            else:
+                print(f"Converting mesh:  {source}")
+                print(f"               -> {destination}")
+
+                convert_mesh_to_stl(source, destination)
+
+        processed[output_name] = source
+
+        # Make path relative to the generated MJCF.
+        relative_mesh_path = Path("meshes") / output_name
+
+        mesh.set(
+            "filename",
+            relative_mesh_path.as_posix(),
+        )
+
+    print(f"Prepared {len(processed)} mesh files.")
+
+
+def fix_zero_inertias(root: ET.Element) -> None:
+    """
+    Replace zero diagonal inertia values.
+
+    MuJoCo requires physically valid inertial parameters.
+    This is disabled by default and can be enabled with --fix-inertia.
+    """
+
+    changed = 0
+
+    for inertia in root.findall(".//inertia"):
+
+        for attribute in ("ixx", "iyy", "izz"):
+
+            value = float(inertia.get(attribute, "0"))
+
+            if value <= 0.0:
+                inertia.set(attribute, "1e-6")
+                changed += 1
+
+        for attribute in ("ixy", "ixz", "iyz"):
+
+            if inertia.get(attribute) is None:
+                inertia.set(attribute, "0.0")
+
+    if changed:
+        print(
+            f"Fixed {changed} zero/invalid diagonal inertia values."
+        )
+
+
+def convert_urdf_to_mjcf(
+    urdf_path: str | Path,
+    output_dir: str | Path | None = None,
+    fix_inertia: bool = False,
+) -> Path:
+    """
+    Convert a URDF robot description into a MuJoCo MJCF XML.
 
     Parameters
     ----------
-    urdf_path : str | Path
-        Path to CyRo.urdf (e.g. from robotic-setup-description).
-    output_dir : str | Path, optional
-        Directory for meshes/ and CyRo.xml. Defaults to package assets.
-    """
-    try:
-        import trimesh
-    except ImportError:
-        raise ImportError(
-            "trimesh required for URDF conversion. "
-            "Install with: pip install trimesh"
-        )
-    import mujoco
+    urdf_path:
+        Path to the input URDF.
 
-    urdf_path = Path(urdf_path)
+    output_dir:
+        Directory where the generated XML and meshes will be stored.
+        Defaults to a directory next to the URDF.
+
+    fix_inertia:
+        Replace zero diagonal inertia values with a small positive value.
+
+    Returns
+    -------
+    Path
+        Path to the generated MJCF XML.
+    """
+
+    try:
+        import mujoco
+    except ImportError as exc:
+        raise ImportError(
+            "MuJoCo is required.\n"
+            "Install with:\n"
+            "    pip install mujoco"
+        ) from exc
+
+    urdf_path = Path(urdf_path).resolve()
+
+    if not urdf_path.exists():
+        raise FileNotFoundError(
+            f"URDF file does not exist:\n    {urdf_path}"
+        )
+
+    if urdf_path.suffix.lower() != ".urdf":
+        raise ValueError(
+            f"Expected a .urdf file, got:\n    {urdf_path}"
+        )
+
     if output_dir is None:
-        output_dir = Path(__file__).parent / "assets"
-    output_dir = Path(output_dir)
-    meshes_root = output_dir / "meshes"
+        output_dir = urdf_path.parent / f"{urdf_path.stem}_mjcf"
+
+    output_dir = Path(output_dir).resolve()
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    print("=" * 60)
+    print("URDF -> MJCF")
+    print("=" * 60)
+    print(f"URDF:    {urdf_path}")
+    print(f"Output:  {output_dir}")
+    print()
+
+    # ---------------------------------------------------------
+    # 1. Read URDF
+    # ---------------------------------------------------------
 
     tree = ET.parse(urdf_path)
-    root = tree.getroot()
-    print(f"Loaded URDF from {urdf_path}")
+    urdf_root = tree.getroot()
 
-    # Remove collision sections
-    for link in root.findall(".//link"):
-        for collision in link.findall("collision"):
-            link.remove(collision)
-
-    mujoco_elem = ET.Element("mujoco")
-    compiler_elem = ET.SubElement(mujoco_elem, "compiler")
-    compiler_elem.set("discardvisual", "false")
-    compiler_elem.set("fusestatic", "false")
-    compiler_elem.set("strippath", "false")  # preserve mesh paths for resolution
-    root.insert(0, mujoco_elem)
-
-    # Fix zero inertia
-    for inertia in root.findall(".//inertia"):
-        for attr in ["ixx", "iyy", "izz"]:
-            val = float(inertia.get(attr, 0.0))
-            if val == 0.0:
-                inertia.set(attr, "0.01")
-        for attr in ["ixy", "ixz", "iyz"]:
-            if inertia.get(attr) is None:
-                inertia.set(attr, "0.0")
-    print("URDF: Replaced zero diagonal inertia values with 0.01")
-
-    stem_to_sources = defaultdict(set)
-    for mesh in root.iter("mesh"):
-        if "filename" in mesh.attrib:
-            full_path = mesh.attrib["filename"].replace("file://", "")
-            stem = Path(os.path.basename(full_path)).stem + ".stl"
-            stem_to_sources[stem].add(full_path)
-    duplicate_stems = {
-        s for s, srcs in stem_to_sources.items() if len(srcs) > 1
-    }
-    print(f"Conflicting mesh names detected: {duplicate_stems}")
-
-    urdf_parent = str(urdf_path.parent)
-
-    for mesh in root.iter("mesh"):
-        if "filename" not in mesh.attrib:
-            continue
-        full_path = mesh.attrib["filename"]
-        file_name = os.path.basename(full_path)
-        full_path_cleaned = full_path.replace("file://", "")
-
-        match = re.search(
-            r"(?:robotic-setup-description|robotic_system)/(.*?)/meshes/(.*?)/(?:visual|collision)",
-            full_path_cleaned.replace("\\", "/"),
+    if urdf_root.tag != "robot":
+        raise ValueError(
+            f"Expected URDF root element <robot>, "
+            f"got <{urdf_root.tag}>"
         )
-        if match:
-            relative_path = f"{match.group(1)}/{match.group(2)}"
-        else:
-            parts = Path(full_path_cleaned).parts
-            if "meshes" in parts:
-                idx = parts.index("meshes")
-                relative_path = "/".join(parts[idx + 1 : -1])
-            else:
-                relative_path = "meshes"
 
-        base_stem = Path(file_name).stem
-        normalized_stem = base_stem + ".stl"
-        if normalized_stem in duplicate_stems:
-            path_prefix = relative_path.replace("/", "_")
-            unique_stem = f"{path_prefix}_{base_stem}"
-        else:
-            unique_stem = base_stem
+    robot_name = urdf_root.get("name", urdf_path.stem)
 
-        unique_stl_name = unique_stem + ".stl"
-        path_to_save = meshes_root / relative_path / unique_stl_name
-        path_to_save.parent.mkdir(parents=True, exist_ok=True)
+    print(f"Robot:   {robot_name}")
 
-        if not path_to_save.is_file():
-            if file_name.lower().endswith((".dae", ".obj")):
-                mesh_obj = trimesh.load(full_path_cleaned)
-                mesh_obj.export(str(path_to_save))
-            elif file_name.lower().endswith(".stl"):
-                shutil.copy(full_path_cleaned, path_to_save)
+    # ---------------------------------------------------------
+    # 2. Prepare meshes
+    # ---------------------------------------------------------
 
-        mesh_path = (Path("meshes") / relative_path / unique_stl_name).as_posix()
-        mesh.attrib["filename"] = mesh_path
-    print("Mesh files (STL) added to meshes folder")
+    prepare_meshes(
+        urdf_root,
+        urdf_path,
+        output_dir,
+    )
 
-    # Write URDF to output_dir so MuJoCo finds meshes/ relative to it
-    output_urdf = output_dir / f"{urdf_path.stem}_relative.urdf"
-    tree.write(str(output_urdf), encoding="utf-8", xml_declaration=False)
+    # ---------------------------------------------------------
+    # 3. Optional inertia correction
+    # ---------------------------------------------------------
 
-    with tempfile.NamedTemporaryFile(
-        suffix=".xml", delete=False
-    ) as tmp:
-        temp_xml = Path(tmp.name)
+    if fix_inertia:
+        fix_zero_inertias(urdf_root)
+
+    # ---------------------------------------------------------
+    # 4. Add MuJoCo compiler settings
+    # ---------------------------------------------------------
+
+    # MuJoCo accepts <mujoco> inside a URDF and uses it
+    # to configure the URDF -> MJCF conversion.
+
+    mujoco_element = urdf_root.find("mujoco")
+
+    if mujoco_element is None:
+        mujoco_element = ET.Element("mujoco")
+        urdf_root.insert(0, mujoco_element)
+
+    compiler = mujoco_element.find("compiler")
+
+    if compiler is None:
+        compiler = ET.SubElement(
+            mujoco_element,
+            "compiler",
+        )
+
+    compiler.set("discardvisual", "false")
+    compiler.set("fusestatic", "false")
+    compiler.set("strippath", "false")
+
+    # ---------------------------------------------------------
+    # 5. Write temporary URDF
+    # ---------------------------------------------------------
+
+    temporary_urdf = output_dir / f"{urdf_path.stem}_prepared.urdf"
+
+    tree.write(
+        temporary_urdf,
+        encoding="utf-8",
+        xml_declaration=False,
+    )
+
+    print()
+    print("Prepared URDF:")
+    print(f"    {temporary_urdf}")
+
+    # ---------------------------------------------------------
+    # 6. Let MuJoCo compile URDF -> MJCF
+    # ---------------------------------------------------------
+
+    output_xml = output_dir / f"{urdf_path.stem}.xml"
+
+    temporary_xml = None
+
     try:
-        model = mujoco.MjModel.from_xml_path(str(output_urdf))
-        mujoco.mj_saveLastXML(str(temp_xml), model)
 
-        tree = ET.parse(temp_xml)
-        root = tree.getroot()
+        with tempfile.NamedTemporaryFile(
+            suffix=".xml",
+            delete=False,
+        ) as tmp:
+            temporary_xml = Path(tmp.name)
 
-        for geom in root.findall(".//geom"):
-            if (
-                geom.get("contype") == "0"
-                and geom.get("conaffinity") == "0"
-                and geom.get("group") == "1"
-                and geom.get("density") == "0"
-            ):
-                geom.set("contype", "1")
-                geom.set("conaffinity", "1")
-                if "group" in geom.attrib:
-                    del geom.attrib["group"]
-                if "density" in geom.attrib:
-                    del geom.attrib["density"]
-            
-            # Get the parent body name to identify if this geom belongs to a tip link
-            parent_body = None
-            # Find the body tag that contains this geom
-            for body in root.findall(".//body"):
-                if geom in list(body):
-                    parent_body = body.get("name", "")
-                    break
-            # Define the tip link names you want to target
-            tip_links = [
-                "right_robot_gripper_finger1_finger_tip_link",
-                "right_robot_gripper_finger2_finger_tip_link",
-                "left_robot_gripper_finger1_finger_tip_link",
-                "left_robot_gripper_finger2_finger_tip_link"
-            ]
-            if parent_body in tip_links:
-                geom.set("friction", "1 0.5 0.01")
-                geom.set("solimp", "0.99 0.99 0.01")
-                geom.set("solref", "0.01 1")
+        print()
+        print("Compiling URDF with MuJoCo...")
 
-        print("XML file: collision enabled for all geoms")
-
-        for mesh_elem in root.findall(".//mesh"):
-            file_attr = mesh_elem.get("file")
-            if not file_attr:
-                continue
-            found_path = None
-            for dirpath, _, filenames in os.walk(meshes_root):
-                for fname in filenames:
-                    if fname.lower() == os.path.basename(file_attr).lower():
-                        found_path = os.path.join(dirpath, fname)
-                        break
-                if found_path:
-                    break
-            if found_path:
-                stl_path = Path(found_path).relative_to(output_dir)
-                mesh_elem.set("file", str(stl_path).replace("\\", "/"))
-            else:
-                print(f"Mesh {file_attr} not found in {meshes_root}")
-
-        option_node = ET.Element(
-            "option",
-            {
-                "timestep": "0.001",
-                "gravity": "0 0 -9.81",
-                "integrator": "implicitfast",
-                "noslip_iterations": "3",
-                "cone": "elliptic",
-                "impratio": "10",
-            },
+        model = mujoco.MjModel.from_xml_path(
+            str(temporary_urdf)
         )
-        default_node = ET.Element("default")
-        ET.SubElement(
-            default_node,
-            "joint",
-            {"damping": "5.0", "armature": "0.05", "frictionloss": "0.001"},
+
+        # MuJoCo writes the fully compiled model as MJCF.
+        mujoco.mj_saveLastXML(
+            str(temporary_xml),
+            model,
         )
-        ET.SubElement(
-            default_node,
-            "geom",
-            {
-                "condim": "4",
-                "friction": "0.8 0.02 0.001",
-                "solimp": "0.9 0.95 0.001",
-                "solref": "0.02 1",
-            },
+
+        # -----------------------------------------------------
+        # 7. Load generated XML and make it readable
+        # -----------------------------------------------------
+
+        mjcf_tree = ET.parse(temporary_xml)
+        mjcf_root = mjcf_tree.getroot()
+
+        indent_xml(mjcf_root)
+
+        mjcf_tree.write(
+            output_xml,
+            encoding="utf-8",
+            xml_declaration=False,
         )
-        ET.SubElement(
-            default_node,
-            "motor",
-            {"ctrllimited": "true", "ctrlrange": "-300 300"},
-        )
-        ET.SubElement(
-            default_node,
-            "position",
-            {
-                "kp": "200",
-                "kv": "40",
-                "ctrllimited": "true",
-                "ctrlrange": "-3.14 3.14",
-            },
-        )
-        root.insert(1, default_node)
-        # root.insert(1, option_node)
 
-        actuator_root = root.find("actuator")
-        if actuator_root is None:
-            actuator_root = ET.SubElement(root, "actuator")
-        for joint in root.findall(".//joint"):
-            jname = joint.attrib.get("name")
-            if jname:
-                ET.SubElement(
-                    actuator_root,
-                    "position",
-                    name=f"{jname}_motor",
-                    joint=jname,
-                    kp="200",
-                )
-        ET.SubElement(
-            actuator_root,
-            "position",
-            {"name": "stereo_left_yaw_motor", "joint": "stereo_left_yaw", "kp": "200"},
-        )
-        ET.SubElement(
-            actuator_root,
-            "position",
-            {
-                "name": "stereo_right_yaw_motor",
-                "joint": "stereo_right_yaw",
-                "kp": "200",
-            },
-        )
-        print("XML file: actuators added")
+    except Exception as exc:
 
-        parent_map = {child: parent for parent in root.iter() for child in parent}
+        raise RuntimeError(
+            "MuJoCo failed to convert the URDF.\n\n"
+            f"URDF:\n    {urdf_path}\n\n"
+            f"Prepared URDF:\n    {temporary_urdf}\n\n"
+            f"Original error:\n    {exc}"
+        ) from exc
 
-        for gripper_first_body_name, sites in GRIPPER_FIRST_BODIES:
-            gripper_body = root.find(f".//body[@name='{gripper_first_body_name}']")
-            if gripper_body is None:
-                continue
-            target = parent_map.get(gripper_body)
-            if target is not None:
-                for site_name in reversed(sites):
-                    site = ET.Element(
-                        "site",
-                        {
-                            "name": site_name,
-                            "pos": "0 0 0",
-                            "size": "0.01 0.01 0.01",
-                            "rgba": "1 0 0 1",
-                            "type": "sphere",
-                            "group": "1",
-                        },
-                    )
-                    target.insert(0, site)
-
-        target_body = root.find(".//body[@name='center_robot_clx_link']")
-        if target_body is not None:
-            for side, name, quat in [
-                ("left", "stereo_left_mount", "0 0 0.707107 0.707107"),
-                ("right", "stereo_right_mount", "0 0 0.707107 0.707107"),
-            ]:
-                body = ET.Element(
-                    "body",
-                    {"name": name, "pos": "0.05 0.0 0.0" if side == "left" else "-0.05 0.0 0.0"},
-                )
-                ET.SubElement(
-                    body,
-                    "joint",
-                    {
-                        "name": f"stereo_{side}_yaw",
-                        "type": "hinge",
-                        "axis": "0 0 1",
-                        "range": "-3.1416 3.1416",
-                    },
-                )
-                ET.SubElement(
-                    body,
-                    "geom",
-                    {
-                        "type": "capsule",
-                        "fromto": "0 0 0 0 0 0.05",
-                        "size": "0.01",
-                        "rgba": "0.2 0.6 1 0.3",
-                    },
-                )
-                cam_pos = "0 -0.05 0"
-                ET.SubElement(
-                    body,
-                    "camera",
-                    {
-                        "name": f"stereo_{side}_cam",
-                        "pos": cam_pos,
-                        "quat": quat,
-                        "fovy": "25",
-                    },
-                )
-                target_body.append(body)
-
-        sensor_elem = root.find("sensor")
-        if sensor_elem is None:
-            sensor_elem = ET.SubElement(root, "sensor")
-        for sensor_type, sname, site in [
-            ("force", "force_ee_right", "ft_frame_right"),
-            ("torque", "torque_ee_right", "ft_frame_right"),
-            ("force", "force_ee_left", "ft_frame_left"),
-            ("torque", "torque_ee_left", "ft_frame_left"),
-        ]:
-            ET.SubElement(
-                sensor_elem, sensor_type, {"name": sname, "site": site}
-            )
-
-        contact_elem = root.find("contact")
-        if contact_elem is None:
-            contact_elem = ET.SubElement(root, "contact")
-        for b1, b2 in [
-            ("left_robot_gripper_finger1_finger_link", "left_robot_gripper_finger1_finger_tip_link"),
-            ("left_robot_gripper_finger2_finger_link", "left_robot_gripper_finger2_finger_tip_link"),
-            ("right_robot_gripper_finger1_finger_link", "right_robot_gripper_finger1_finger_tip_link"),
-            ("right_robot_gripper_finger2_finger_link", "right_robot_gripper_finger2_finger_tip_link"),
-        ]:
-            ET.SubElement(contact_elem, "exclude", {"body1": b1, "body2": b2})
-
-        urdf_tree = ET.parse(urdf_path)
-        equality_elem = root.find("equality")
-        if equality_elem is None:
-            equality_elem = ET.SubElement(root, "equality")
-        for joint in urdf_tree.getroot().findall("joint"):
-            mimic = joint.find("mimic")
-            if mimic is not None:
-                child_joint = joint.attrib["name"]
-                target_joint = mimic.attrib.get("joint")
-                multiplier = float(mimic.attrib.get("multiplier", "1.0"))
-                offset = float(mimic.attrib.get("offset", "0.0"))
-                ET.SubElement(
-                    equality_elem,
-                    "joint",
-                    {
-                        "joint1": target_joint,
-                        "joint2": child_joint,
-                        "polycoef": f"{offset} {multiplier} 0",
-                    },
-                )
-        print("Added equality joints from mimic joints")
-
-        # 1. Delete unwanted rod joints For DH AG 145 gripper
-        for body in root.findall(".//body"):
-            for joint in list(body.findall("joint")):
-                jname = joint.attrib.get("name")
-                if jname in DELETED_GRIPPER_JOINTS:
-                    body.remove(joint)
-
-        # 2. Process equality constraints
-        equality_elem = root.find("equality")
-        if equality_elem is not None:
-            for eq in list(equality_elem.findall("joint")):
-                j1 = eq.attrib.get("joint1")
-                j2 = eq.attrib.get("joint2")
-                # remove equality referencing deleted joints
-                if j1 in DELETED_GRIPPER_JOINTS or j2 in DELETED_GRIPPER_JOINTS:
-                    equality_elem.remove(eq)
-                    continue
-
-                # normalize polycoef values (1.xx -> 1.0)
-                poly = eq.attrib.get("polycoef")
-                if poly:
-                    parts = poly.split()
-                    if len(parts) >= 2:
-                        coef = float(parts[1])
-                        if abs(coef) >= 1.0:
-                            coef = 1.0 if coef > 0 else -1.0
-                        parts[1] = f"{coef:.1f}"
-                        eq.set("polycoef", " ".join(parts))
-
-        # 3. Remove unwanted gripper actuators
-        actuator_elem = root.find("actuator")
-        if actuator_elem is not None:
-            for act in list(actuator_elem):
-                joint_name = act.attrib.get("joint", "")
-                # actuator controlling a gripper joint
-                if "robot_gripper" in joint_name:
-                    # keep only finger1 actuators
-                    if joint_name not in GRIPPER_ACTUATED_JOINTS:
-                        actuator_elem.remove(act)
-
-        _indent(root)
-
-        for body in root.iter("body"):
-            if body.get("name") == "center_robot_link1" and body.get("pos") == "0 0 0.1555":
-                body.set("pos", "0 0 0.157")
-            if body.get("name") == "left_robot_link1" and body.get("pos") == "0 0 0.1":
-                body.set("pos", "0 0 0.135")
-            if body.get("name") == "right_robot_link1" and body.get("pos") == "0 0 0.1":
-                body.set("pos", "0 0 0.135")
-
-        output_xml = output_dir / f"{urdf_path.stem}.xml"
-        tree.write(str(output_xml), encoding="utf-8", xml_declaration=False)
-        print(f"XML saved to {output_xml}")
     finally:
-        if temp_xml.exists():
-            temp_xml.unlink()
-        if output_urdf.exists():
-            output_urdf.unlink()
-            print("Deleted temporary CyRo_relative.urdf")
+
+        if temporary_xml is not None:
+            temporary_xml.unlink(missing_ok=True)
+
+        temporary_urdf.unlink(missing_ok=True)
+
+    print()
+    print("=" * 60)
+    print("Conversion successful!")
+    print("=" * 60)
+    print(f"MJCF:    {output_xml}")
+    print(f"Meshes:  {output_dir / 'meshes'}")
+    print()
+
+    return output_xml
+
+
+def main() -> None:
+
+    parser = argparse.ArgumentParser(
+        description="Convert a URDF robot description to MuJoCo MJCF."
+    )
+
+    parser.add_argument(
+        "urdf",
+        type=Path,
+        help="Path to the input URDF file.",
+    )
+
+    parser.add_argument(
+        "-o",
+        "--output",
+        type=Path,
+        default=None,
+        help=(
+            "Output directory. "
+            "Defaults to <urdf_name>_mjcf next to the URDF."
+        ),
+    )
+
+    parser.add_argument(
+        "--fix-inertia",
+        action="store_true",
+        help="Replace zero diagonal inertia values with a small positive value.",
+    )
+
+    args = parser.parse_args()
+
+    convert_urdf_to_mjcf(
+        urdf_path=args.urdf,
+        output_dir=args.output,
+        fix_inertia=args.fix_inertia,
+    )
+
+
+if __name__ == "__main__":
+    main()

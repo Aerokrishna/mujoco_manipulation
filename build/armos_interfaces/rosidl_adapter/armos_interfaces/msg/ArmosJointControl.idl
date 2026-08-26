@@ -1,0 +1,28 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from armos_interfaces/msg/ArmosJointControl.msg
+// generated code does not contain a copyright notice
+
+
+module armos_interfaces {
+  module msg {
+    struct ArmosJointControl {
+      @verbatim (language="comment", text=
+        "0 position 1 velocity 2 torque")
+      uint8 mode;
+
+      float joint1;
+
+      float joint2;
+
+      float joint3;
+
+      float joint4;
+
+      float joint5;
+
+      float joint6;
+
+      float joint7;
+    };
+  };
+};

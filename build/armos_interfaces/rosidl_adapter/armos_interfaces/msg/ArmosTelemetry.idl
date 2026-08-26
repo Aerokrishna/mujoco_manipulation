@@ -1,0 +1,28 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from armos_interfaces/msg/ArmosTelemetry.msg
+// generated code does not contain a copyright notice
+
+
+module armos_interfaces {
+  module msg {
+    struct ArmosTelemetry {
+      float timestamp;
+
+      sequence<float> joint_pos;
+
+      sequence<float> joint_vel;
+
+      sequence<float> joint_torque;
+
+      sequence<float> wrench;
+
+      sequence<float> tcp_pose;
+
+      sequence<float> tcp_twist;
+
+      float manipulability;
+
+      float singularity_distance;
+    };
+  };
+};

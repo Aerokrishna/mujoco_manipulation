@@ -1,0 +1,25 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/armos_interfaces/msg/detail/armos_cart_control__type_support.cpp.o"
+  "CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/armos_interfaces/msg/detail/armos_cart_control__type_support.cpp.o.d"
+  "CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/armos_interfaces/msg/detail/armos_joint_control__type_support.cpp.o"
+  "CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/armos_interfaces/msg/detail/armos_joint_control__type_support.cpp.o.d"
+  "CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/armos_interfaces/msg/detail/armos_telemetry__type_support.cpp.o"
+  "CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/armos_interfaces/msg/detail/armos_telemetry__type_support.cpp.o.d"
+  "CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/armos_interfaces/srv/detail/armos_set_gripper__type_support.cpp.o"
+  "CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/armos_interfaces/srv/detail/armos_set_gripper__type_support.cpp.o.d"
+  "libarmos_interfaces__rosidl_typesupport_introspection_cpp.pdb"
+  "libarmos_interfaces__rosidl_typesupport_introspection_cpp.so"
+  "rosidl_typesupport_introspection_cpp/armos_interfaces/msg/detail/armos_cart_control__rosidl_typesupport_introspection_cpp.hpp"
+  "rosidl_typesupport_introspection_cpp/armos_interfaces/msg/detail/armos_cart_control__type_support.cpp"
+  "rosidl_typesupport_introspection_cpp/armos_interfaces/msg/detail/armos_joint_control__rosidl_typesupport_introspection_cpp.hpp"
+  "rosidl_typesupport_introspection_cpp/armos_interfaces/msg/detail/armos_joint_control__type_support.cpp"
+  "rosidl_typesupport_introspection_cpp/armos_interfaces/msg/detail/armos_telemetry__rosidl_typesupport_introspection_cpp.hpp"
+  "rosidl_typesupport_introspection_cpp/armos_interfaces/msg/detail/armos_telemetry__type_support.cpp"
+  "rosidl_typesupport_introspection_cpp/armos_interfaces/srv/detail/armos_set_gripper__rosidl_typesupport_introspection_cpp.hpp"
+  "rosidl_typesupport_introspection_cpp/armos_interfaces/srv/detail/armos_set_gripper__type_support.cpp"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_cpp.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

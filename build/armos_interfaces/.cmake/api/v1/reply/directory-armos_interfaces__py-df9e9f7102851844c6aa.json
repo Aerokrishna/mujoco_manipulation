@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "armos_interfaces__py",
+		"source" : "/home/krishnapranav/mj_manipulation/mujoco_manipulation/build/armos_interfaces/armos_interfaces__py"
+	}
+}

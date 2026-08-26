@@ -1,0 +1,10 @@
+msg/ArmosCartControl.idl
+msg/ArmosCartControl.msg
+msg/ArmosJointControl.idl
+msg/ArmosJointControl.msg
+msg/ArmosTelemetry.idl
+msg/ArmosTelemetry.msg
+srv/ArmosSetGripper.idl
+srv/ArmosSetGripper.srv
+srv/ArmosSetGripper_Request.msg
+srv/ArmosSetGripper_Response.msg

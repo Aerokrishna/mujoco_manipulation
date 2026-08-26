@@ -1,0 +1,25 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/armos_interfaces/msg/detail/armos_cart_control__type_support.c.o"
+  "CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/armos_interfaces/msg/detail/armos_cart_control__type_support.c.o.d"
+  "CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/armos_interfaces/msg/detail/armos_joint_control__type_support.c.o"
+  "CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/armos_interfaces/msg/detail/armos_joint_control__type_support.c.o.d"
+  "CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/armos_interfaces/msg/detail/armos_telemetry__type_support.c.o"
+  "CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/armos_interfaces/msg/detail/armos_telemetry__type_support.c.o.d"
+  "CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/armos_interfaces/srv/detail/armos_set_gripper__type_support.c.o"
+  "CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/armos_interfaces/srv/detail/armos_set_gripper__type_support.c.o.d"
+  "libarmos_interfaces__rosidl_typesupport_introspection_c.pdb"
+  "libarmos_interfaces__rosidl_typesupport_introspection_c.so"
+  "rosidl_typesupport_introspection_c/armos_interfaces/msg/detail/armos_cart_control__rosidl_typesupport_introspection_c.h"
+  "rosidl_typesupport_introspection_c/armos_interfaces/msg/detail/armos_cart_control__type_support.c"
+  "rosidl_typesupport_introspection_c/armos_interfaces/msg/detail/armos_joint_control__rosidl_typesupport_introspection_c.h"
+  "rosidl_typesupport_introspection_c/armos_interfaces/msg/detail/armos_joint_control__type_support.c"
+  "rosidl_typesupport_introspection_c/armos_interfaces/msg/detail/armos_telemetry__rosidl_typesupport_introspection_c.h"
+  "rosidl_typesupport_introspection_c/armos_interfaces/msg/detail/armos_telemetry__type_support.c"
+  "rosidl_typesupport_introspection_c/armos_interfaces/srv/detail/armos_set_gripper__rosidl_typesupport_introspection_c.h"
+  "rosidl_typesupport_introspection_c/armos_interfaces/srv/detail/armos_set_gripper__type_support.c"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C)
+  include(CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_c.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

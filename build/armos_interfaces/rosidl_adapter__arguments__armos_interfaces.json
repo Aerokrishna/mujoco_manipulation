@@ -1,0 +1,9 @@
+{
+  "package_name": "armos_interfaces",
+  "non_idl_tuples": [
+    "/home/krishnapranav/mj_manipulation/mujoco_manipulation/armos_ros2/pkgs/armos_interfaces:msg/ArmosTelemetry.msg",
+    "/home/krishnapranav/mj_manipulation/mujoco_manipulation/armos_ros2/pkgs/armos_interfaces:msg/ArmosJointControl.msg",
+    "/home/krishnapranav/mj_manipulation/mujoco_manipulation/armos_ros2/pkgs/armos_interfaces:msg/ArmosCartControl.msg",
+    "/home/krishnapranav/mj_manipulation/mujoco_manipulation/armos_ros2/pkgs/armos_interfaces:srv/ArmosSetGripper.srv"
+  ]
+}

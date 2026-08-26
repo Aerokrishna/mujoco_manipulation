@@ -1,0 +1,233 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-af5be3f1e01d4486affe.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				},
+				{
+					"build" : "armos_interfaces__py",
+					"jsonFile" : "directory-armos_interfaces__py-df9e9f7102851844c6aa.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/krishnapranav/mj_manipulation/mujoco_manipulation/build/armos_interfaces/armos_interfaces__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "armos_interfaces",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_armos_interfaces_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_armos_interfaces_egg-2e688d45a43c5d13135e.json",
+					"name" : "ament_cmake_python_build_armos_interfaces_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_armos_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_armos_interfaces-2c6caa225a5538b4b306.json",
+					"name" : "ament_cmake_python_copy_armos_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "armos_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-armos_interfaces-a558042f8b5b35ff7c0a.json",
+					"name" : "armos_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "armos_interfaces__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-armos_interfaces__cpp-d0917cab1b5b6a880762.json",
+					"name" : "armos_interfaces__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "armos_interfaces__py::@92975bdc8d744fea3583",
+					"jsonFile" : "target-armos_interfaces__py-fbdaed7d55c355a2917e.json",
+					"name" : "armos_interfaces__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "armos_interfaces__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-armos_interfaces__rosidl_generator_c-61bb0b27c53f7f31758a.json",
+					"name" : "armos_interfaces__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "armos_interfaces__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-armos_interfaces__rosidl_generator_py-84082242651fc524ed48.json",
+					"name" : "armos_interfaces__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "armos_interfaces__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-armos_interfaces__rosidl_typesupport_c-76f659434e63e67e1048.json",
+					"name" : "armos_interfaces__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "armos_interfaces__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-armos_interfaces__rosidl_typesupport_c__pyext-8b1a23ee19bbd61349c8.json",
+					"name" : "armos_interfaces__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "armos_interfaces__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-armos_interfaces__rosidl_typesupport_cpp-6f431ec5f50bbe2c938e.json",
+					"name" : "armos_interfaces__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "armos_interfaces__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-armos_interfaces__rosidl_typesupport_fastrtps_c-879ee280a14245db12be.json",
+					"name" : "armos_interfaces__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "armos_interfaces__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-armos_interfaces__rosidl_typesupport_fastrtps_c__pyext-8d9511614fb0fc58fe4e.json",
+					"name" : "armos_interfaces__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "armos_interfaces__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-armos_interfaces__rosidl_typesupport_fastrtps_cpp-94b3b33e7b25cd168a14.json",
+					"name" : "armos_interfaces__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "armos_interfaces__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-armos_interfaces__rosidl_typesupport_introspection_c-eb2ff36e2a12d4daa14a.json",
+					"name" : "armos_interfaces__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "armos_interfaces__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-armos_interfaces__rosidl_typesupport_introspection_c__pyext-ed2ccbaa8b597a9005da.json",
+					"name" : "armos_interfaces__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "armos_interfaces__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-armos_interfaces__rosidl_typesupport_introspection_cpp-4869658cdbe4d9f358cb.json",
+					"name" : "armos_interfaces__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "armos_interfaces_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-armos_interfaces_uninstall-4303f5b1f946ae8b362d.json",
+					"name" : "armos_interfaces_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-14820aeb3442f4e4b321.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/krishnapranav/mj_manipulation/mujoco_manipulation/build/armos_interfaces",
+		"source" : "/home/krishnapranav/mj_manipulation/mujoco_manipulation/armos_ros2/pkgs/armos_interfaces"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

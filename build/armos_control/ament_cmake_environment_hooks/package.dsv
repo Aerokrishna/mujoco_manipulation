@@ -1,0 +1,4 @@
+source;share/armos_control/local_setup.bash
+source;share/armos_control/local_setup.dsv
+source;share/armos_control/local_setup.sh
+source;share/armos_control/local_setup.zsh

@@ -1,0 +1,25 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from armos_interfaces/srv/ArmosSetMode.srv
+// generated code does not contain a copyright notice
+
+
+module armos_interfaces {
+  module srv {
+    @verbatim (language="comment", text=
+      "Goal")
+    struct ArmosSetMode_Request {
+      @verbatim (language="comment", text=
+        "the arm you will be passing to")
+      string arm_id;
+
+      string mode;
+    };
+    @verbatim (language="comment", text=
+      "Result")
+    struct ArmosSetMode_Response {
+      @verbatim (language="comment", text=
+        "true if task completed")
+      boolean success;
+    };
+  };
+};

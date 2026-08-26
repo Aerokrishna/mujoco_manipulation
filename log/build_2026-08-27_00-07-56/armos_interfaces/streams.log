@@ -1,0 +1,328 @@
+[0.016s] Invoking command in '/home/krishnapranav/mj_manipulation/mujoco_manipulation/build/armos_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble PS1=(armos) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(armos) /usr/bin/cmake --build /home/krishnapranav/mj_manipulation/mujoco_manipulation/build/armos_interfaces -- -j12 -l12
+[0.066s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.198s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.202s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.207s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.234s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.464s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[0.576s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.710s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.740s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[0.772s] -- Using PYTHON_EXECUTABLE: /home/krishnapranav/.venvs/armos/bin/python3
+[0.772s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[0.772s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[0.791s] -- Configuring done
+[0.816s] -- Generating done
+[0.828s] -- Build files have been written to: /home/krishnapranav/mj_manipulation/mujoco_manipulation/build/armos_interfaces
+[0.847s] [  1%] [34m[1mGenerating C code for ROS interfaces[0m
+[0.853s] [  3%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[0.860s] [  3%] Built target ament_cmake_python_copy_armos_interfaces
+[1.068s] running egg_info
+[1.085s] writing armos_interfaces.egg-info/PKG-INFO
+[1.086s] writing dependency_links to armos_interfaces.egg-info/dependency_links.txt
+[1.086s] writing top-level names to armos_interfaces.egg-info/top_level.txt
+[1.138s] reading manifest file 'armos_interfaces.egg-info/SOURCES.txt'
+[1.139s] writing manifest file 'armos_interfaces.egg-info/SOURCES.txt'
+[1.161s] [  3%] Built target ament_cmake_python_build_armos_interfaces_egg
+[1.213s] [  3%] Built target armos_interfaces__cpp
+[1.220s] [  9%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[1.220s] [  9%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[1.221s] [  9%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[1.296s] [ 14%] [32mBuilding C object CMakeFiles/armos_interfaces__rosidl_generator_c.dir/rosidl_generator_c/armos_interfaces/srv/detail/armos_set_gripper__functions.c.o[0m
+[1.297s] [ 14%] [32mBuilding C object CMakeFiles/armos_interfaces__rosidl_generator_c.dir/rosidl_generator_c/armos_interfaces/msg/detail/armos_telemetry__functions.c.o[0m
+[1.297s] [ 14%] [32mBuilding C object CMakeFiles/armos_interfaces__rosidl_generator_c.dir/rosidl_generator_c/armos_interfaces/msg/detail/armos_joint_control__functions.c.o[0m
+[1.297s] [ 16%] [32mBuilding C object CMakeFiles/armos_interfaces__rosidl_generator_c.dir/rosidl_generator_c/armos_interfaces/msg/detail/armos_cart_control__functions.c.o[0m
+[1.391s] [ 18%] [32m[1mLinking C shared library libarmos_interfaces__rosidl_generator_c.so[0m
+[1.422s] [ 18%] Built target armos_interfaces__rosidl_generator_c
+[1.427s] [ 20%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[1.428s] [ 23%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[1.428s] [ 23%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[1.639s] [ 25%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/armos_interfaces/msg/armos_telemetry__type_support.cpp.o[0m
+[1.641s] [ 27%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/armos_interfaces/msg/armos_joint_control__type_support.cpp.o[0m
+[1.641s] [ 29%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/armos_interfaces/msg/armos_cart_control__type_support.cpp.o[0m
+[1.641s] [ 30%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/armos_interfaces/srv/armos_set_gripper__type_support.cpp.o[0m
+[1.648s] [ 32%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/armos_interfaces/msg/detail/armos_telemetry__type_support.cpp.o[0m
+[1.648s] [ 34%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/armos_interfaces/msg/detail/armos_joint_control__type_support.cpp.o[0m
+[1.652s] [ 36%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/armos_interfaces/srv/detail/armos_set_gripper__type_support.cpp.o[0m
+[1.652s] [ 38%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/armos_interfaces/msg/detail/armos_cart_control__type_support.cpp.o[0m
+[1.683s] [ 40%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/armos_interfaces/msg/armos_telemetry__type_support.cpp.o[0m
+[1.752s] [ 41%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/armos_interfaces/msg/armos_joint_control__type_support.cpp.o[0m
+[1.805s] [ 43%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/armos_interfaces/msg/armos_cart_control__type_support.cpp.o[0m
+[1.848s] [ 45%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/armos_interfaces/srv/armos_set_gripper__type_support.cpp.o[0m
+[1.849s] [ 47%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/armos_interfaces/msg/detail/dds_fastrtps/armos_telemetry__type_support.cpp.o[0m
+[1.881s] [ 49%] [32m[1mLinking CXX shared library libarmos_interfaces__rosidl_typesupport_c.so[0m
+[1.921s] [ 49%] Built target armos_interfaces__rosidl_typesupport_c
+[1.938s] [ 50%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/armos_interfaces/msg/detail/dds_fastrtps/armos_joint_control__type_support.cpp.o[0m
+[1.969s] [ 52%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/armos_interfaces/msg/detail/armos_telemetry__type_support_c.cpp.o[0m
+[2.069s] [ 54%] [32mBuilding C object CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/armos_interfaces/msg/detail/armos_telemetry__type_support.c.o[0m
+[2.173s] [ 56%] [32mBuilding C object CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/armos_interfaces/msg/detail/armos_joint_control__type_support.c.o[0m
+[2.192s] [ 58%] [32mBuilding C object CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/armos_interfaces/msg/detail/armos_cart_control__type_support.c.o[0m
+[2.200s] [ 60%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/armos_interfaces/msg/detail/dds_fastrtps/armos_cart_control__type_support.cpp.o[0m
+[2.211s] [ 61%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/armos_interfaces/msg/detail/armos_joint_control__type_support_c.cpp.o[0m
+[2.218s] [ 63%] [32mBuilding C object CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/armos_interfaces/srv/detail/armos_set_gripper__type_support.c.o[0m
+[2.228s] [ 65%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/armos_interfaces/msg/detail/armos_cart_control__type_support_c.cpp.o[0m
+[2.237s] [ 67%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/armos_interfaces/srv/detail/dds_fastrtps/armos_set_gripper__type_support.cpp.o[0m
+[2.248s] [ 69%] [32m[1mLinking CXX shared library libarmos_interfaces__rosidl_typesupport_cpp.so[0m
+[2.250s] [ 70%] [32mBuilding CXX object CMakeFiles/armos_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/armos_interfaces/srv/detail/armos_set_gripper__type_support_c.cpp.o[0m
+[2.273s] [ 72%] [32m[1mLinking C shared library libarmos_interfaces__rosidl_typesupport_introspection_c.so[0m
+[2.284s] [ 72%] Built target armos_interfaces__rosidl_typesupport_cpp
+[2.304s] [ 72%] Built target armos_interfaces__rosidl_typesupport_introspection_c
+[2.422s] [ 74%] [32m[1mLinking CXX shared library libarmos_interfaces__rosidl_typesupport_introspection_cpp.so[0m
+[2.536s] [ 74%] Built target armos_interfaces__rosidl_typesupport_introspection_cpp
+[2.735s] [ 76%] [32m[1mLinking CXX shared library libarmos_interfaces__rosidl_typesupport_fastrtps_c.so[0m
+[2.806s] [ 78%] [32m[1mLinking CXX shared library libarmos_interfaces__rosidl_typesupport_fastrtps_cpp.so[0m
+[2.817s] [ 78%] Built target armos_interfaces__rosidl_typesupport_fastrtps_c
+[2.883s] [ 78%] Built target armos_interfaces__rosidl_typesupport_fastrtps_cpp
+[2.896s] [ 78%] Built target armos_interfaces
+[2.910s] [ 80%] [34m[1mGenerating Python code for ROS interfaces[0m
+[3.593s] [ 80%] Built target armos_interfaces__py
+[3.613s] [ 83%] [32mBuilding C object CMakeFiles/armos_interfaces__rosidl_generator_py.dir/rosidl_generator_py/armos_interfaces/msg/_armos_joint_control_s.c.o[0m
+[3.613s] [ 83%] [32mBuilding C object CMakeFiles/armos_interfaces__rosidl_generator_py.dir/rosidl_generator_py/armos_interfaces/msg/_armos_cart_control_s.c.o[0m
+[3.613s] [ 85%] [32mBuilding C object CMakeFiles/armos_interfaces__rosidl_generator_py.dir/rosidl_generator_py/armos_interfaces/msg/_armos_telemetry_s.c.o[0m
+[3.616s] [ 87%] [32mBuilding C object CMakeFiles/armos_interfaces__rosidl_generator_py.dir/rosidl_generator_py/armos_interfaces/srv/_armos_set_gripper_s.c.o[0m
+[3.755s] [ 89%] [32m[1mLinking C shared library rosidl_generator_py/armos_interfaces/libarmos_interfaces__rosidl_generator_py.so[0m
+[3.793s] [ 89%] Built target armos_interfaces__rosidl_generator_py
+[3.812s] [ 90%] [32mBuilding C object CMakeFiles/armos_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/armos_interfaces/_armos_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[3.816s] [ 92%] [32mBuilding C object CMakeFiles/armos_interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/armos_interfaces/_armos_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[3.818s] [ 94%] [32mBuilding C object CMakeFiles/armos_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/armos_interfaces/_armos_interfaces_s.ep.rosidl_typesupport_c.c.o[0m
+[3.898s] [ 96%] [32m[1mLinking C shared library rosidl_generator_py/armos_interfaces/armos_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.927s] [ 96%] Built target armos_interfaces__rosidl_typesupport_introspection_c__pyext
+[3.932s] [ 98%] [32m[1mLinking C shared library rosidl_generator_py/armos_interfaces/armos_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.955s] [100%] [32m[1mLinking C shared library rosidl_generator_py/armos_interfaces/armos_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.962s] [100%] Built target armos_interfaces__rosidl_typesupport_fastrtps_c__pyext
+[3.978s] [100%] Built target armos_interfaces__rosidl_typesupport_c__pyext
+[3.984s] Invoked command in '/home/krishnapranav/mj_manipulation/mujoco_manipulation/build/armos_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble PS1=(armos) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(armos) /usr/bin/cmake --build /home/krishnapranav/mj_manipulation/mujoco_manipulation/build/armos_interfaces -- -j12 -l12
+[3.991s] Invoking command in '/home/krishnapranav/mj_manipulation/mujoco_manipulation/build/armos_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble PS1=(armos) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(armos) /usr/bin/cmake --install /home/krishnapranav/mj_manipulation/mujoco_manipulation/build/armos_interfaces
+[3.998s] -- Install configuration: ""
+[3.998s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/ament_index/resource_index/rosidl_interfaces/armos_interfaces
+[3.998s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces
+[3.998s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg
+[3.999s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail
+[3.999s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_telemetry__type_support.h
+[3.999s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_telemetry__struct.h
+[3.999s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_joint_control__functions.h
+[3.999s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_joint_control__functions.c
+[3.999s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_joint_control__struct.h
+[3.999s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_cart_control__type_support.h
+[4.000s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_telemetry__functions.c
+[4.000s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_cart_control__functions.c
+[4.000s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_telemetry__functions.h
+[4.000s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_cart_control__functions.h
+[4.000s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_joint_control__type_support.h
+[4.001s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_cart_control__struct.h
+[4.001s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/armos_telemetry.h
+[4.001s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/armos_joint_control.h
+[4.001s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/armos_cart_control.h
+[4.001s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/rosidl_generator_c__visibility_control.h
+[4.001s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv
+[4.002s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/armos_set_gripper.h
+[4.002s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/armos_set_mode.h
+[4.002s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail
+[4.002s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_gripper__struct.h
+[4.002s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_gripper__type_support.h
+[4.002s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_mode__functions.c
+[4.002s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_gripper__functions.h
+[4.002s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_gripper__functions.c
+[4.003s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_mode__functions.h
+[4.003s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_mode__struct.h
+[4.003s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_mode__type_support.h
+[4.003s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/environment/library_path.sh
+[4.003s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/environment/library_path.dsv
+[4.003s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/libarmos_interfaces__rosidl_generator_c.so
+[4.004s] -- Set runtime path of "/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/libarmos_interfaces__rosidl_generator_c.so" to ""
+[4.004s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces
+[4.004s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg
+[4.004s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail
+[4.004s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_cart_control__rosidl_typesupport_fastrtps_c.h
+[4.005s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_joint_control__rosidl_typesupport_fastrtps_c.h
+[4.005s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_telemetry__rosidl_typesupport_fastrtps_c.h
+[4.005s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[4.005s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv
+[4.005s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail
+[4.006s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_mode__rosidl_typesupport_fastrtps_c.h
+[4.006s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_gripper__rosidl_typesupport_fastrtps_c.h
+[4.006s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/libarmos_interfaces__rosidl_typesupport_fastrtps_c.so
+[4.006s] -- Set runtime path of "/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/libarmos_interfaces__rosidl_typesupport_fastrtps_c.so" to ""
+[4.006s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces
+[4.007s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg
+[4.007s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[4.007s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail
+[4.010s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_cart_control__rosidl_typesupport_introspection_c.h
+[4.010s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_telemetry__rosidl_typesupport_introspection_c.h
+[4.010s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_telemetry__type_support.c
+[4.011s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_cart_control__type_support.c
+[4.011s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_joint_control__type_support.c
+[4.011s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_joint_control__rosidl_typesupport_introspection_c.h
+[4.012s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv
+[4.012s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail
+[4.012s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_mode__type_support.c
+[4.012s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_gripper__rosidl_typesupport_introspection_c.h
+[4.012s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_gripper__type_support.c
+[4.012s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_mode__rosidl_typesupport_introspection_c.h
+[4.012s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/libarmos_interfaces__rosidl_typesupport_introspection_c.so
+[4.012s] -- Set runtime path of "/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/libarmos_interfaces__rosidl_typesupport_introspection_c.so" to ""
+[4.012s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/libarmos_interfaces__rosidl_typesupport_c.so
+[4.013s] -- Set runtime path of "/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/libarmos_interfaces__rosidl_typesupport_c.so" to ""
+[4.013s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces
+[4.013s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg
+[4.013s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
+[4.013s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/armos_cart_control.hpp
+[4.013s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail
+[4.013s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_cart_control__builder.hpp
+[4.013s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_joint_control__type_support.hpp
+[4.013s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_cart_control__traits.hpp
+[4.014s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_joint_control__struct.hpp
+[4.014s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_telemetry__traits.hpp
+[4.014s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_joint_control__builder.hpp
+[4.014s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_telemetry__type_support.hpp
+[4.014s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_telemetry__builder.hpp
+[4.014s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_joint_control__traits.hpp
+[4.014s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_cart_control__type_support.hpp
+[4.014s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_telemetry__struct.hpp
+[4.015s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_cart_control__struct.hpp
+[4.015s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/armos_telemetry.hpp
+[4.015s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/armos_joint_control.hpp
+[4.015s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv
+[4.016s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/armos_set_gripper.hpp
+[4.016s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/armos_set_mode.hpp
+[4.016s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail
+[4.017s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_mode__struct.hpp
+[4.017s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_mode__builder.hpp
+[4.017s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_gripper__builder.hpp
+[4.017s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_mode__type_support.hpp
+[4.017s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_gripper__traits.hpp
+[4.018s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_gripper__type_support.hpp
+[4.018s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_gripper__struct.hpp
+[4.018s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_mode__traits.hpp
+[4.018s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces
+[4.018s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg
+[4.019s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[4.019s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail
+[4.019s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_joint_control__rosidl_typesupport_fastrtps_cpp.hpp
+[4.019s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_telemetry__rosidl_typesupport_fastrtps_cpp.hpp
+[4.019s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_cart_control__rosidl_typesupport_fastrtps_cpp.hpp
+[4.020s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/dds_fastrtps
+[4.020s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv
+[4.020s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail
+[4.020s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_mode__rosidl_typesupport_fastrtps_cpp.hpp
+[4.020s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/dds_fastrtps
+[4.020s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_gripper__rosidl_typesupport_fastrtps_cpp.hpp
+[4.021s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/libarmos_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[4.021s] -- Set runtime path of "/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/libarmos_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""
+[4.021s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces
+[4.021s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg
+[4.021s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail
+[4.021s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_telemetry__rosidl_typesupport_introspection_cpp.hpp
+[4.021s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_telemetry__type_support.cpp
+[4.021s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_cart_control__type_support.cpp
+[4.022s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_joint_control__rosidl_typesupport_introspection_cpp.hpp
+[4.022s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_joint_control__type_support.cpp
+[4.022s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/msg/detail/armos_cart_control__rosidl_typesupport_introspection_cpp.hpp
+[4.022s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv
+[4.022s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail
+[4.022s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_mode__type_support.cpp
+[4.022s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_mode__rosidl_typesupport_introspection_cpp.hpp
+[4.022s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_gripper__type_support.cpp
+[4.022s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/include/armos_interfaces/armos_interfaces/srv/detail/armos_set_gripper__rosidl_typesupport_introspection_cpp.hpp
+[4.023s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/libarmos_interfaces__rosidl_typesupport_introspection_cpp.so
+[4.023s] -- Set runtime path of "/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/libarmos_interfaces__rosidl_typesupport_introspection_cpp.so" to ""
+[4.023s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/libarmos_interfaces__rosidl_typesupport_cpp.so
+[4.024s] -- Set runtime path of "/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/libarmos_interfaces__rosidl_typesupport_cpp.so" to ""
+[4.024s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/environment/pythonpath.sh
+[4.024s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/environment/pythonpath.dsv
+[4.024s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces-0.0.0-py3.10.egg-info
+[4.024s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces-0.0.0-py3.10.egg-info/PKG-INFO
+[4.025s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces-0.0.0-py3.10.egg-info/top_level.txt
+[4.025s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces-0.0.0-py3.10.egg-info/dependency_links.txt
+[4.025s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces-0.0.0-py3.10.egg-info/SOURCES.txt
+[4.026s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces
+[4.026s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/armos_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[4.026s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/_armos_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[4.027s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/libarmos_interfaces__rosidl_generator_py.so
+[4.027s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/_armos_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[4.027s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/armos_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[4.028s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/__init__.py
+[4.028s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/armos_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[4.028s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/_armos_interfaces_s.ep.rosidl_typesupport_c.c
+[4.029s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/msg
+[4.029s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/msg/_armos_joint_control.py
+[4.029s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/msg/_armos_telemetry.py
+[4.029s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/msg/_armos_cart_control.py
+[4.030s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/msg/_armos_cart_control_s.c
+[4.030s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/msg/__init__.py
+[4.030s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/msg/_armos_telemetry_s.c
+[4.031s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/msg/_armos_joint_control_s.c
+[4.031s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/srv
+[4.031s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/srv/_armos_set_gripper_s.c
+[4.031s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/srv/__init__.py
+[4.032s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/srv/_armos_set_gripper.py
+[4.032s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/srv/_armos_set_mode.py
+[4.032s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/srv/_armos_set_mode_s.c
+[4.073s] Listing '/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces'...
+[4.074s] Compiling '/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/__init__.py'...
+[4.074s] Listing '/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/msg'...
+[4.074s] Compiling '/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/msg/__init__.py'...
+[4.074s] Compiling '/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/msg/_armos_cart_control.py'...
+[4.074s] Compiling '/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/msg/_armos_joint_control.py'...
+[4.074s] Compiling '/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/msg/_armos_telemetry.py'...
+[4.074s] Listing '/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/srv'...
+[4.074s] Compiling '/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/srv/__init__.py'...
+[4.074s] Compiling '/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/srv/_armos_set_gripper.py'...
+[4.079s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/armos_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[4.080s] -- Set runtime path of "/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/armos_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[4.080s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/armos_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[4.080s] -- Set runtime path of "/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/armos_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[4.080s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/armos_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[4.081s] -- Set runtime path of "/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/python3.10/site-packages/armos_interfaces/armos_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[4.081s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/libarmos_interfaces__rosidl_generator_py.so
+[4.082s] -- Set runtime path of "/home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/lib/libarmos_interfaces__rosidl_generator_py.so" to ""
+[4.082s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/msg/ArmosTelemetry.idl
+[4.082s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/msg/ArmosJointControl.idl
+[4.082s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/msg/ArmosCartControl.idl
+[4.082s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/srv/ArmosSetGripper.idl
+[4.082s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/msg/ArmosTelemetry.msg
+[4.082s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/msg/ArmosJointControl.msg
+[4.082s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/msg/ArmosCartControl.msg
+[4.082s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/srv/ArmosSetGripper.srv
+[4.082s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/srv/ArmosSetGripper_Request.msg
+[4.082s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/srv/ArmosSetGripper_Response.msg
+[4.082s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/ament_index/resource_index/package_run_dependencies/armos_interfaces
+[4.082s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/ament_index/resource_index/parent_prefix_path/armos_interfaces
+[4.082s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/environment/ament_prefix_path.sh
+[4.083s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/environment/ament_prefix_path.dsv
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/environment/path.sh
+[4.083s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/environment/path.dsv
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/local_setup.bash
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/local_setup.sh
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/local_setup.zsh
+[4.083s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/local_setup.dsv
+[4.083s] -- Installing: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/package.dsv
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/ament_index/resource_index/packages/armos_interfaces
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/export_armos_interfaces__rosidl_generator_cExport.cmake
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/export_armos_interfaces__rosidl_generator_cExport-noconfig.cmake
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/export_armos_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/export_armos_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/armos_interfaces__rosidl_typesupport_introspection_cExport.cmake
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/armos_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/armos_interfaces__rosidl_typesupport_cExport.cmake
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/armos_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/export_armos_interfaces__rosidl_generator_cppExport.cmake
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/export_armos_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/export_armos_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[4.083s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/armos_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[4.084s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/armos_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[4.084s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/armos_interfaces__rosidl_typesupport_cppExport.cmake
+[4.084s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/armos_interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[4.084s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/export_armos_interfaces__rosidl_generator_pyExport.cmake
+[4.084s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/export_armos_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[4.084s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/rosidl_cmake-extras.cmake
+[4.084s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[4.084s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[4.084s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[4.084s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[4.084s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[4.084s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[4.084s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/armos_interfacesConfig.cmake
+[4.084s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/cmake/armos_interfacesConfig-version.cmake
+[4.084s] -- Up-to-date: /home/krishnapranav/mj_manipulation/mujoco_manipulation/install/armos_interfaces/share/armos_interfaces/package.xml
+[4.086s] Invoked command in '/home/krishnapranav/mj_manipulation/mujoco_manipulation/build/armos_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble PS1=(armos) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(armos) /usr/bin/cmake --install /home/krishnapranav/mj_manipulation/mujoco_manipulation/build/armos_interfaces

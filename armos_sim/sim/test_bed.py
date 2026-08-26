@@ -12,49 +12,44 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[2])) 
 from robot_kinematics.manyplot.telemetry_logger import TelemetryLogger
 
-dual_arm = True
+dual_arm = False
 
-assets = Path(__file__).parent / ".." / "assets" / "franka_emika_panda"
+assets = Path(__file__).parent / ".." / "assets" / "duman"
 if dual_arm:
     default = assets / "dual_franka.yaml"
 else:
-    default = assets / "franka.yaml"
+    default = assets / "duman.yaml"
 
 telem_log = TelemetryLogger()
 
 def main_demo() -> None:
-    """Run the built-in demo (interactive MuJoCo viewer)."""
-    time.sleep(1)  # let OS scheduler settle before launching viewer
+    time.sleep(1)
 
     sim = CyRoSimulator(config_path=default)
 
     def on_step(tick: int, t: float, telem: Telemetry) -> None:
-        # print(tick)
-        if tick==2:
+        if tick == 2:
             sim.set_mode("left", ControlMode.JOINT_POS)
-            sim.set_joint_pos("left", q = [1.56, -0.78539816, 0.0, -2.35619449, 0.0, 1.57079633, 0.78539816])
-            
-        if tick ==100:
-            sim.set_mode("left", ControlMode.TASK_POSE)
 
-            sim.show_object_frame("attachment_site")
-            sim.show_object_frame("panda")
-
-        if tick==101:
-            # sim.set_tcp_vel("left.", linear=[-0.05, 0., -0.06], angular=[0.,0.0,0.])
-            sim.set_tcp_pose("left", pos=[0.3, 0, 0.2], rot = [[ 9.99995667e-01,  2.00273503e-03, -2.15762363e-03],
-                                                                [ 2.00269853e-03, -9.99997994e-01, -1.90771176e-05 ],
-                                                                [-2.15765751e-03,  1.47559653e-05, -9.99997672e-01 ]])
-        
-        if tick == 200:
-            sim.set_mode("left", ControlMode.TASK_VEL)
-        
-        if 2600>tick>=200:
-            sim.set_tcp_vel("left", linear=[0, 0, 0.05], angular=[0, 0.02, 0])
-            # print("collecting tick :", tick)
-            
+        if tick == 400:
+            print("ROBOT SHUD MOVE")
+            sim.set_mode("left", ControlMode.JOINT_POS)
+            sim.set_joint_pos("left",q=[0.4,0.,0.5,0,1,0.6])
     sim.on_step(on_step)
-    sim.run(headless=False)
+    sim.set_gripper()
+
+    try:
+        sim.run(headless=False)
+    except KeyboardInterrupt:
+        print("\nStopping simulation...")
+    finally:
+        print("Cleaning up...")
+        try:
+            # sim.stop()
+            sim.close()
+        except AttributeError:
+            pass
 
 if __name__ == "__main__":
     main_demo()
+    

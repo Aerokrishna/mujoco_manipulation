@@ -1,0 +1,33 @@
+scene_xml_path: /home/krishnapranav/mj_manipulation/mujoco_manipulation/armos_sim/assets/duman/scene.xml
+robot_xml_path: /home/krishnapranav/mj_manipulation/mujoco_manipulation/armos_sim/assets/duman/duman.xml
+assets_dir: duman
+grippers:
+  left: left_robot_gripper_finger1_joint_motor
+  right: right_robot_gripper_finger1_joint_motor
+gripper_closed: 0.0
+gripper_open: -0.85
+arms:
+  left:
+    start_body: actuator_2
+    ee_site: ee_left
+    wrench_force_sensor: null
+    wrench_torque_sensor: null
+    q_home:
+    - 0.0
+    - 0
+    - 0.0
+    - 0
+    - 0.0
+    - 0
+  right:
+    start_body: actuator
+    ee_site: ee_right
+    wrench_force_sensor: null
+    wrench_torque_sensor: null
+    q_home:
+    - 0.0
+    - 0
+    - 0.0
+    - 0
+    - 0.0
+    - 0
